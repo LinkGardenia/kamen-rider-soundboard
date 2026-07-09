@@ -1,0 +1,33 @@
+# Flutter
+.dart_tool/
+.packages
+build/
+*.iml
+*.lock
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Android
+android/.gradle/
+android/app/build/
+android/local.properties
+android/key.properties
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Assets (large binary files - add your own .mp3/.png files here)
+# assets/sounds/**/*.mp3
+# assets/images/**/*.png
