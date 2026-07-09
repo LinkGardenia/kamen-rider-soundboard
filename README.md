@@ -57,80 +57,66 @@ lib/
 ### 环境要求
 
 - Flutter SDK >= 3.2.0
-- Android Studio / VS Code
-- Android SDK (用于构建 APK)
+- Visual Studio 2022 (Windows 桌面开发) - 仅 Windows 构建需要
+- Android Studio + Android SDK - 仅 Android 构建需要
 
-### 安装运行
+### 三步构建
 
 ```bash
 # 1. 克隆仓库
 git clone https://github.com/LinkGardenia/kamen-rider-soundboard.git
 cd kamen-rider-soundboard
 
-# 2. 安装依赖
+# 2. 一键构建（推荐）
+.\scripts\build_all.ps1
+
+# 或手动分步：
 flutter pub get
-
-# 3. 生成占位资源（首次运行必须）
-# Windows PowerShell:
-.\scripts\generate_assets.ps1
-
-# 4. 运行
-flutter run
-
-# 5. 构建 APK
-flutter build apk --debug
-# APK: build/app/outputs/flutter-apk/app-debug.apk
+.\scripts\generate_assets.ps1    # 生成占位图片
+.\scripts\download_resources.ps1 # 从网络下载音效/图片（交互式）
+.\scripts\setup_windows.ps1      # 添加 Windows 平台支持
+flutter build windows --release  # 构建 .exe
+flutter build apk --release      # 构建 .apk
 ```
+
+### 输出位置
+
+| 平台 | 输出路径 |
+|------|---------|
+| 🖥️ **Windows .exe** | `build/windows/x64/runner/Release/kamen_rider_soundboard.exe` |
+| 📱 **Android APK** | `build/app/outputs/flutter-apk/app-release.apk` |
 
 ---
 
-## 🎵 添加音效和图片
+## 📥 从网络下载音效和图片
 
-应用内置了 20 部 TV 系列的完整数据，但需要你自行添加音效 `.mp3` 文件和骑士 `.png` 图片。
+### 音效来源：Voicemod Tuna
+
+| 步骤 | 操作 |
+|------|------|
+| 1 | 打开 https://tuna.voicemod.net/ |
+| 2 | 搜索 `kamen rider henshin` / `kamen rider belt` 等关键词 |
+| 3 | 将下载的 `.mp3` 放入 `assets/sounds/{系列id}/{骑士id}/` |
+| 4 | 或运行 `.\scripts\download_resources.ps1 -Sounds` 自动引导 |
+
+### 图片来源：HiClipart
+
+| 步骤 | 操作 |
+|------|------|
+| 1 | 打开 https://www.hiclipart.com/ |
+| 2 | 搜索各骑士名（如 `Kamen Rider Kuuga`），下载透明 PNG |
+| 3 | 放入 `assets/images/riders/` 按骑士 ID 命名 |
+| 4 | 或运行 `.\scripts\download_resources.ps1 -Images` 自动引导 |
 
 ### 音效文件命名规则
 
-将音效放入 `assets/sounds/{系列id}/{骑士id}/` 目录：
-
 ```
-assets/sounds/
-├── kuuga/kuuga/          # 空我
-│   ├── henshin.mp3       # 变身音效
-│   ├── hissatsu.mp3      # 必杀技
-│   ├── belt.mp3          # 腰带音效
-│   ├── weapon.mp3        # 武器音效
-│   └── lines.mp3         # 经典台词
-├── ryuki/ryuki/          # 龙骑
-│   └── ...
-├── ryuki/knight/         # 夜骑
-│   └── ...
-└── ...
-```
-
-### 图片文件命名规则
-
-将图片放入 `assets/images/` 对应目录：
-
-```
-assets/images/
-├── riders/               # 骑士立绘 (按骑士ID命名)
-│   ├── kuuga.png
-│   ├── ryuki.png
-│   └── ...
-├── series/               # TV系列封面 (按系列ID命名)
-│   ├── kuuga_cover.png
-│   ├── ryuki_cover.png
-│   └── ...
-├── symbols/              # 骑士标志
-├── backgrounds/          # 背景图
-└── themes/               # 主题预览图
-```
-
-### 快速生成占位资源
-
-```powershell
-# 运行资源生成脚本，创建所有需要的占位图片
-.\scripts\generate_assets.ps1
+assets/sounds/{系列id}/{骑士id}/
+├── henshin.mp3       # 变身音效
+├── hissatsu.mp3      # 必杀技
+├── belt.mp3          # 腰带音效
+├── weapon.mp3        # 武器音效
+└── lines.mp3         # 经典台词
 ```
 
 ---
