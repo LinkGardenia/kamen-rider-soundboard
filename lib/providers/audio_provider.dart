@@ -25,18 +25,13 @@ class AudioProvider extends ChangeNotifier {
       await _player.play(AssetSource(sound.assetPath));
     } catch (e) {
       debugPrint('Play failed: $e');
-      _activeId = null;
-      notifyListeners();
+      _activeId = null; notifyListeners();
     }
   }
 
   Future<void> stop() async {
-    await _player.stop();
-    _activeId = null;
-    _playing = false;
-    notifyListeners();
+    await _player.stop(); _activeId = null; _playing = false; notifyListeners();
   }
 
-  @override
-  void dispose() { _player.dispose(); super.dispose(); }
+  @override void dispose() { _player.dispose(); super.dispose(); }
 }
