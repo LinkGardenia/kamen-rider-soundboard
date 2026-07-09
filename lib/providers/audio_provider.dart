@@ -21,14 +21,22 @@ class AudioProvider extends ChangeNotifier {
     if (_activeId == sound.id && _playing) { await stop(); return; }
     await _player.stop();
     _activeId = sound.id;
-    try { await _player.play(AssetSource(sound.assetPath)); } catch (e) {
-      debugPrint('Play failed: $e'); _activeId = null; notifyListeners();
+    try {
+      await _player.play(AssetSource(sound.assetPath));
+    } catch (e) {
+      debugPrint('Play failed: $e');
+      _activeId = null;
+      notifyListeners();
     }
   }
 
   Future<void> stop() async {
-    await _player.stop(); _activeId = null; _playing = false; notifyListeners();
+    await _player.stop();
+    _activeId = null;
+    _playing = false;
+    notifyListeners();
   }
 
-  @override void dispose() { _player.dispose(); super.dispose(); }
+  @override
+  void dispose() { _player.dispose(); super.dispose(); }
 }
