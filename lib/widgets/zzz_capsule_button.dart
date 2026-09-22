@@ -37,10 +37,16 @@ class _ZZZCapsuleButtonState extends State<ZZZCapsuleButton> with SingleTickerPr
               child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(widget.iconEmoji, style: TextStyle(fontSize: widget.isHenshin ? 18 : 24)),
                 SizedBox(height: widget.isHenshin ? 1 : 4),
-                Text(widget.label, textAlign: TextAlign.center, maxLines: widget.isHenshin ? 1 : 2, overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontFamily: 'Impact', fontSize: widget.isHenshin ? 17 : 13, fontWeight: FontWeight.w900,
-                    color: widget.isActive ? widget.accentColor : Colors.white, letterSpacing: 1.0, height: 1.2,
-                    shadows: widget.isActive ? [Shadow(color: widget.accentColor.withOpacity(0.9), blurRadius: 16)] : [])),
+                if (widget.isHenshin)
+                  FittedBox(fit: BoxFit.scaleDown, child: Text(widget.label, textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Impact', fontSize: 15, fontWeight: FontWeight.w500,
+                      color: widget.isActive ? widget.accentColor : Colors.white, letterSpacing: 1.0, height: 1.2,
+                      shadows: widget.isActive ? [Shadow(color: widget.accentColor.withOpacity(0.9), blurRadius: 16)] : [])))
+                else
+                  Text(widget.label, textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontFamily: 'Impact', fontSize: 13, fontWeight: FontWeight.w900,
+                      color: widget.isActive ? widget.accentColor : Colors.white, letterSpacing: 1.0, height: 1.2,
+                      shadows: widget.isActive ? [Shadow(color: widget.accentColor.withOpacity(0.9), blurRadius: 16)] : []),),
                 if (widget.subLabel != null) ...[SizedBox(height: widget.isHenshin ? 1 : 2),
                   Text(widget.subLabel!, maxLines: 1, overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: widget.isHenshin ? 9 : 10, color: widget.accentColor.withOpacity(0.7)))],

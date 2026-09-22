@@ -51,8 +51,8 @@ class FormSelectScreen extends StatelessWidget {
                 child: GridView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 1.1,
-                    crossAxisSpacing: 12, mainAxisSpacing: 12),
+                    crossAxisCount: 3, childAspectRatio: 1.0,
+                    crossAxisSpacing: 10, mainAxisSpacing: 10),
                   itemCount: rider.forms.length,
                   itemBuilder: (ctx, i) {
                     final form = rider.forms[i];

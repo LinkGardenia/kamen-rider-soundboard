@@ -15,12 +15,12 @@ class FormCard extends StatelessWidget {
         boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), offset: const Offset(4, 4), blurRadius: 0),
           BoxShadow(color: riderColor.withOpacity(0.1), blurRadius: 12, offset: const Offset(0, 2))]),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(width: 56, height: 56, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: riderColor.withOpacity(0.6), width: 2),
+          Container(width: 44, height: 44, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: riderColor.withOpacity(0.6), width: 2),
             gradient: RadialGradient(colors: [riderColor.withOpacity(0.2), theme.colors.surface])),
-            child: Icon(Icons.auto_awesome, size: 28, color: riderColor)),
-          const SizedBox(height: 10),
+            child: Icon(Icons.auto_awesome, size: 22, color: riderColor)),
+          const SizedBox(height: 6),
           Text(form.name, textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontFamily: theme.typography.accentFontFamily, fontSize: 14, fontWeight: FontWeight.bold, color: theme.colors.textPrimary)),
+            style: TextStyle(fontFamily: theme.typography.accentFontFamily, fontSize: 12, fontWeight: FontWeight.bold, color: theme.colors.textPrimary)),
         ])));
   }
 }
