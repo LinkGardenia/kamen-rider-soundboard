@@ -4,13 +4,14 @@ import '../models/rider_form.dart';
 import '../models/sound_effect.dart';
 import '../utils/constants.dart';
 
-/// ZZZ 系列单个音效/形态定义（键、显示名、文件名、默认分类）
+/// ZZZ 系列单个音效/形态定义（键、显示名、文件名、默认分类、是否为形态按钮）
 class ZzzSoundDef {
   final String key;
   final String label;
   final String file;
   final SoundCategory category;
-  const ZzzSoundDef(this.key, this.label, this.file, this.category);
+  final bool isForm;
+  const ZzzSoundDef(this.key, this.label, this.file, this.category, {this.isForm = true});
 }
 
 class SoundRepository {
@@ -287,56 +288,57 @@ class SoundRepository {
         ]),
     ]);
 
-  /// ZZZ 系列音效/形态定义：骑士 id → 音效列表
-  /// 形态由音效文件生成（形态名 = 音效名），当前形态的音效会作为「变身」
+  /// ZZZ 系列音效/形态定义：骑士 id → 音效列表（列表顺序 = 形态按钮顺序）
+  /// 形态音效统一归「变身」；Zeztz Driver 为腰带音效（isForm=false，不生成形态按钮）
   static const Map<String, List<ZzzSoundDef>> _zzzDefs = {
     'zeztz': [
+      ZzzSoundDef('impact', 'Impact', 'impact.wav', SoundCategory.henshin),
       ZzzSoundDef('transform', 'Transform', 'transform.wav', SoundCategory.henshin),
-      ZzzSoundDef('zeztz_driver', 'Zeztz Driver', 'zeztz_driver.wav', SoundCategory.belt),
-      ZzzSoundDef('barrier', 'Barrier', 'barrier.wav', SoundCategory.other),
-      ZzzSoundDef('booster', 'Booster', 'booster.wav', SoundCategory.other),
-      ZzzSoundDef('catastrom', 'Catastrom', 'catastrom.wav', SoundCategory.other),
-      ZzzSoundDef('exdream', 'EXDREAM', 'exdream.wav', SoundCategory.other),
-      ZzzSoundDef('gravity', 'Gravity', 'gravity.wav', SoundCategory.other),
-      ZzzSoundDef('impact', 'Impact', 'impact.wav', SoundCategory.other),
-      ZzzSoundDef('machinery', 'Machinery', 'machinery.wav', SoundCategory.other),
-      ZzzSoundDef('order', 'Order', 'order.wav', SoundCategory.other),
-      ZzzSoundDef('plasma', 'Plasma', 'plasma.wav', SoundCategory.other),
-      ZzzSoundDef('projection', 'Projection', 'projection.wav', SoundCategory.other),
-      ZzzSoundDef('recovery', 'Recovery', 'recovery.wav', SoundCategory.other),
-      ZzzSoundDef('stream', 'Stream', 'stream.wav', SoundCategory.other),
-      ZzzSoundDef('wing', 'Wing', 'wing.wav', SoundCategory.other),
-      ZzzSoundDef('wonder', 'Wonder', 'wonder.wav', SoundCategory.other),
+      ZzzSoundDef('wing', 'Wing', 'wing.wav', SoundCategory.henshin),
+      ZzzSoundDef('stream', 'Stream', 'stream.wav', SoundCategory.henshin),
+      ZzzSoundDef('machinery', 'Machinery', 'machinery.wav', SoundCategory.henshin),
+      ZzzSoundDef('projection', 'Projection', 'projection.wav', SoundCategory.henshin),
+      ZzzSoundDef('recovery', 'Recovery', 'recovery.wav', SoundCategory.henshin),
+      ZzzSoundDef('barrier', 'Barrier', 'barrier.wav', SoundCategory.henshin),
+      ZzzSoundDef('gravity', 'Gravity', 'gravity.wav', SoundCategory.henshin),
+      ZzzSoundDef('wonder', 'Wonder', 'wonder.wav', SoundCategory.henshin),
+      ZzzSoundDef('plasma', 'Plasma', 'plasma.wav', SoundCategory.henshin),
+      ZzzSoundDef('booster', 'Booster', 'booster.wav', SoundCategory.henshin),
+      ZzzSoundDef('catastrom', 'Catastrom', 'catastrom.wav', SoundCategory.henshin),
+      ZzzSoundDef('order', 'Order', 'order.wav', SoundCategory.henshin),
+      ZzzSoundDef('exdream', 'EXDREAM', 'exdream.wav', SoundCategory.henshin),
+      ZzzSoundDef('zeztz_driver', 'Zeztz Driver', 'zeztz_driver.wav', SoundCategory.belt, isForm: false),
     ],
     'nox': [
       ZzzSoundDef('erase', 'Erase(完整版）', 'erase.wav', SoundCategory.henshin),
-      ZzzSoundDef('gun', 'Gun', 'gun.wav', SoundCategory.weapon),
-      ZzzSoundDef('midnight_shadow', 'MIDNIGHT SHADOW', 'midnight_shadow.wav', SoundCategory.other),
-      ZzzSoundDef('shadow', 'Shadow', 'shadow.wav', SoundCategory.other),
-      ZzzSoundDef('wolf', 'Wolf', 'wolf.wav', SoundCategory.other),
+      ZzzSoundDef('shadow', 'Shadow', 'shadow.wav', SoundCategory.henshin),
+      ZzzSoundDef('gun', 'Gun', 'gun.wav', SoundCategory.henshin),
+      ZzzSoundDef('wolf', 'Wolf', 'wolf.wav', SoundCategory.henshin),
+      ZzzSoundDef('midnight_shadow', 'MIDNIGHT SHADOW', 'midnight_shadow.wav', SoundCategory.henshin),
     ],
     'dawm': [
       ZzzSoundDef('punish', 'PUNISH', 'punish.wav', SoundCategory.henshin),
     ],
     'code3': [
-      ZzzSoundDef('booster', 'Booster', 'booster.wav', SoundCategory.other),
-      ZzzSoundDef('extra', 'Extra', 'extra.wav', SoundCategory.other),
+      ZzzSoundDef('booster', 'Booster', 'booster.wav', SoundCategory.henshin),
+      ZzzSoundDef('extra', 'Extra', 'extra.wav', SoundCategory.henshin),
     ],
     'code5': [
-      ZzzSoundDef('shock', 'Shock', 'shock.wav', SoundCategory.other),
+      ZzzSoundDef('shock', 'Shock', 'shock.wav', SoundCategory.henshin),
     ],
     'code6': [
-      ZzzSoundDef('panic', 'Panic', 'panic.wav', SoundCategory.other),
+      ZzzSoundDef('panic', 'Panic', 'panic.wav', SoundCategory.henshin),
     ],
   };
 
-  /// 由音效文件生成骑士与形态列表（形态名 = 音效名）
+  /// 由音效文件生成骑士与形态列表（形态名 = 音效名；isForm=false 的音效不生成形态按钮）
   static KamenRider _zzzRider(String id, String name, String colorHex) => KamenRider(
     id: id, name: name, seriesId: 'zzz',
     imagePath: 'assets/images/riders/$id.png', symbolPath: 'assets/images/symbols/$id.png', colorHex: colorHex,
     forms: [
       for (final d in _zzzDefs[id]!)
-        RiderForm(id: '${id}_${d.key}', name: d.label, riderId: id, imagePath: 'assets/images/riders/$id.png'),
+        if (d.isForm)
+          RiderForm(id: '${id}_${d.key}', name: d.label, riderId: id, imagePath: 'assets/images/riders/$id.png'),
     ]);
 
   static final zzz = TVSeries(id: 'zzz', title: '假面骑士Zeztz', yearRange: '2025-2026', era: '令和',
@@ -351,27 +353,25 @@ class SoundRepository {
       _zzzRider('code6', 'Code Number 6', '#EF4444'),
     ]);
 
-  /// ZZZ 系列音效：当前形态对应的音效作为「变身」，其余音效按默认分类展示
+  /// ZZZ 系列音效：形态音效统一归「变身」（Zeztz Driver 归「腰带」）
+  /// isCurrentForm 标记当前所选形态的音效，供音效面板大按钮播放
   static List<SoundEffect> _zzzSounds(String riderId, String formId) {
     final defs = _zzzDefs[riderId];
     if (defs == null) return [];
     final currentKey = formId.startsWith('${riderId}_') ? formId.substring(riderId.length + 1) : '';
 
-    final sounds = <SoundEffect>[];
-    for (final d in defs) {
-      final SoundCategory cat = d.key == currentKey
-          ? SoundCategory.henshin
-          : (d.category == SoundCategory.henshin ? SoundCategory.other : d.category);
-      sounds.add(SoundEffect(
-        id: '${riderId}_${d.key}$formId',
-        name: d.label,
-        riderId: riderId,
-        formId: formId,
-        category: cat,
-        assetPath: 'assets/sounds/zzz/$riderId/${d.file}',
-      ));
-    }
-    return sounds;
+    return [
+      for (final d in defs)
+        SoundEffect(
+          id: '${riderId}_${d.key}$formId',
+          name: d.label,
+          riderId: riderId,
+          formId: formId,
+          category: d.category,
+          isCurrentForm: d.key == currentKey,
+          assetPath: 'assets/sounds/zzz/$riderId/${d.file}',
+        ),
+    ];
   }
 
   static final List<TVSeries> _all = [

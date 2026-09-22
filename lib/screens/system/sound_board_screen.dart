@@ -26,7 +26,9 @@ class _SoundBoardScreenState extends State<SoundBoardScreen> {
     final c = Color(int.parse('0xFF${widget.rider.colorHex.substring(1)}'));
     final all = SoundRepository.getSounds(widget.rider.id, widget.selectedForm.id);
     final filtered = _cat == null ? all : all.where((s) => s.category == _cat).toList();
-    final henshin = all.where((s) => s.category == SoundCategory.henshin).firstOrNull;
+    // 优先取「当前所选形态」的音效作为大按钮目标（ZZZ），其他系列回退到第一个变身音效
+    final henshin = all.where((s) => s.isCurrentForm).firstOrNull ??
+        all.where((s) => s.category == SoundCategory.henshin).firstOrNull;
 
     return Scaffold(backgroundColor: theme.colors.background,
       appBar: AppBar(title: Text(widget.rider.name, style: TextStyle(fontFamily: theme.typography.accentFontFamily, fontSize: 18, color: theme.colors.accent)), backgroundColor: theme.colors.background, elevation: 0,
