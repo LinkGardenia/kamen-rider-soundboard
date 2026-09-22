@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-一个整合了大部分假面骑士的变身系统，帮助每位骑士随时随地变身！HenShin！
-=======
 # 🎭 假面骑士变身音效板 (Kamen Rider Soundboard)
+
+> 一个整合了大部分假面骑士的变身系统，帮助每位骑士随时随地变身！HenShin！
 
 > Flutter 跨平台移动端应用 · ZZZ 复古潮流风格 UI · 收录 20 部 TV 系列 60+ 假面骑士
 
@@ -180,4 +179,3 @@ assets/sounds/{系列id}/{骑士id}/
 ## 📄 License
 
 MIT License - 详见 [LICENSE](LICENSE)
->>>>>>> 9323bfb (Add README, placeholder images, and asset generation script)

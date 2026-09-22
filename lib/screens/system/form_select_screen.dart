@@ -15,7 +15,8 @@ class FormSelectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.watch<ThemeManager>().currentTheme;
     final c = Color(int.parse('0xFF${rider.colorHex.substring(1)}'));
-    final favs = context.read<FavoritesProvider>();
+    // 用 watch 订阅收藏变化，点击星标后 UI 才能立即刷新
+    final favs = context.watch<FavoritesProvider>();
 
     return Scaffold(
       backgroundColor: theme.colors.background,

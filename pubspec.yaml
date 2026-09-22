@@ -22,7 +22,31 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/sounds/
+    # 音效目录需逐个列出（Flutter 不会自动递归子目录）
+    - assets/sounds/blade/blade/
+    - assets/sounds/decade/decade/
+    - assets/sounds/deno/deno/
+    - assets/sounds/drive/drive/
+    - assets/sounds/exaid/exaid/
+    - assets/sounds/faiz/faiz/
+    - assets/sounds/fourze/fourze/
+    - assets/sounds/gaim/gaim/
+    - assets/sounds/geats/geats/
+    - assets/sounds/gotchard/gotchard/
+    - assets/sounds/kuuga/kuuga/
+    - assets/sounds/ooo/ooo/
+    - assets/sounds/revice/revi/
+    - assets/sounds/ryuki/knight/
+    - assets/sounds/ryuki/ouja/
+    - assets/sounds/ryuki/ryuki/
+    - assets/sounds/ryuki/zolda/
+    - assets/sounds/saber/saber/
+    - assets/sounds/w/w/
+    - assets/sounds/wizard/wizard/
+    - assets/sounds/zero_one/zero_one/
+    - assets/sounds/zio/zio/
+    - assets/sounds/zzz/zeztz/
+    - assets/sounds/zzz/nox/
     - assets/images/riders/
     - assets/images/series/
     - assets/images/symbols/
