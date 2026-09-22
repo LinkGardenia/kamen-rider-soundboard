@@ -281,82 +281,92 @@ class SoundRepository {
   static final zzz = TVSeries(id: 'zzz', title: '假面骑士Zeztz', yearRange: '2025-2026', era: '令和',
     coverImagePath: 'assets/images/series/zzz_cover.png', logoPath: 'assets/images/series/zzz_logo.png',
     themeColorHex: '#A855F7', riders: [
+      // 6 位骑士与音效文件夹一一对应（假面骑士zzz\音效）
       KamenRider(id: 'zeztz', name: '假面骑士Zeztz', seriesId: 'zzz',
         imagePath: 'assets/images/riders/zeztz.png', symbolPath: 'assets/images/symbols/zeztz.png', colorHex: '#A855F7',
         forms: [
-          RiderForm(id: 'zeztz_transform', name: 'Transform肌体变形', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_transform.png'),
-          RiderForm(id: 'zeztz_barrier', name: 'Barrier（屏障）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_barrier.png'),
-          RiderForm(id: 'zeztz_booster', name: 'Booster（推进器）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_booster.png'),
-          RiderForm(id: 'zeztz_catastrom', name: 'Catastrom（灾变）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_catastrom.png'),
-          RiderForm(id: 'zeztz_gravity', name: 'Gravity（重力）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_gravity.png'),
-          RiderForm(id: 'zeztz_impact', name: 'Impact（冲击）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_impact.png'),
-          RiderForm(id: 'zeztz_machinery', name: 'Machinery（机械）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_machinery.png'),
-          RiderForm(id: 'zeztz_plasma', name: 'Plasma（等离子）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_plasma.png'),
-          RiderForm(id: 'zeztz_projection', name: 'Projection（投影）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_projection.png'),
-          RiderForm(id: 'zeztz_recovery', name: 'Recovery（恢复）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_recovery.png'),
-          RiderForm(id: 'zeztz_stream', name: 'Stream（激流）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_stream.png'),
-          RiderForm(id: 'zeztz_wing', name: 'Wing（羽翼）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_wing.png'),
-          RiderForm(id: 'zeztz_wonder', name: 'Wonder（奇迹）', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz_wonder.png'),
+          RiderForm(id: 'zeztz_transform', name: 'Transform肌体变形', riderId: 'zeztz', imagePath: 'assets/images/riders/zeztz.png'),
         ]),
       KamenRider(id: 'nox', name: '假面骑士NOX', seriesId: 'zzz',
         imagePath: 'assets/images/riders/nox.png', symbolPath: 'assets/images/symbols/nox.png', colorHex: '#00D4FF',
         forms: [
-          RiderForm(id: 'nox_erase', name: '清除形态', riderId: 'nox', imagePath: 'assets/images/riders/nox_erase.png'),
+          RiderForm(id: 'nox_erase', name: '清除形态', riderId: 'nox', imagePath: 'assets/images/riders/nox.png'),
+        ]),
+      KamenRider(id: 'dawm', name: 'DAWM', seriesId: 'zzz',
+        imagePath: 'assets/images/riders/dawm.png', symbolPath: 'assets/images/symbols/dawm.png', colorHex: '#FF6B35',
+        forms: [
+          RiderForm(id: 'dawm_default', name: '默认形态', riderId: 'dawm', imagePath: 'assets/images/riders/dawm.png'),
+        ]),
+      KamenRider(id: 'code3', name: 'Code Number 3', seriesId: 'zzz',
+        imagePath: 'assets/images/riders/code3.png', symbolPath: 'assets/images/symbols/code3.png', colorHex: '#F59E0B',
+        forms: [
+          RiderForm(id: 'code3_default', name: '默认形态', riderId: 'code3', imagePath: 'assets/images/riders/code3.png'),
+        ]),
+      KamenRider(id: 'code5', name: 'Code Number 5', seriesId: 'zzz',
+        imagePath: 'assets/images/riders/code5.png', symbolPath: 'assets/images/symbols/code5.png', colorHex: '#22C55E',
+        forms: [
+          RiderForm(id: 'code5_default', name: '默认形态', riderId: 'code5', imagePath: 'assets/images/riders/code5.png'),
+        ]),
+      KamenRider(id: 'code6', name: 'Code Number 6', seriesId: 'zzz',
+        imagePath: 'assets/images/riders/code6.png', symbolPath: 'assets/images/symbols/code6.png', colorHex: '#EF4444',
+        forms: [
+          RiderForm(id: 'code6_default', name: '默认形态', riderId: 'code6', imagePath: 'assets/images/riders/code6.png'),
         ]),
     ]);
 
-  /// ZZZ 系列：形态 → 形态专属变身音（对应 assets/sounds/zzz/{骑士}/ 下的真实 WAV）
-  static const Map<String, String> _zzzFormHenshin = {
-    'zeztz_transform': 'transform.wav',
-    'zeztz_barrier': 'barrier.wav',
-    'zeztz_booster': 'booster.wav',
-    'zeztz_catastrom': 'catastrom.wav',
-    'zeztz_gravity': 'gravity.wav',
-    'zeztz_impact': 'impact.wav',
-    'zeztz_machinery': 'machinery.wav',
-    'zeztz_plasma': 'plasma.wav',
-    'zeztz_projection': 'projection.wav',
-    'zeztz_recovery': 'recovery.wav',
-    'zeztz_stream': 'stream.wav',
-    'zeztz_wing': 'wing.wav',
-    'zeztz_wonder': 'wonder.wav',
-    'nox_erase': 'erase.wav',
-  };
-
-  /// ZZZ 系列音效：每个形态播放自己的变身音，另有腰带/武器/追加音效
+  /// ZZZ 系列音效：与「假面骑士zzz\音效」文件夹的 6 位骑士一一对应
   static List<SoundEffect> _zzzSounds(String riderId, String formId) {
-    SoundEffect fx(String id, String name, SoundCategory category, String file) => SoundEffect(
+    SoundEffect fx(String id, String name, String file, [SoundCategory category = SoundCategory.other]) => SoundEffect(
       id: '${riderId}_$id$formId', name: name, riderId: riderId, formId: formId,
       category: category, assetPath: 'assets/sounds/zzz/$riderId/$file');
 
-    final sounds = <SoundEffect>[];
-
-    // 形态专属变身音
-    final henshin = _zzzFormHenshin[formId];
-    if (henshin != null) {
-      sounds.add(fx('henshin', '变身！', SoundCategory.henshin, henshin));
+    switch (riderId) {
+      case 'zeztz':
+        return [
+          fx('henshin', '变身！Transform', 'transform.wav', SoundCategory.henshin),
+          fx('belt', '腰带音效（Zeztz Driver）', 'zeztz_driver.wav', SoundCategory.belt),
+          fx('barrier', 'Barrier（屏障）', 'barrier.wav'),
+          fx('booster', 'Booster（推进器）', 'booster.wav'),
+          fx('catastrom', 'Catastrom（灾变）', 'catastrom.wav'),
+          fx('exdream', 'EXDREAM', 'exdream.wav'),
+          fx('gravity', 'Gravity（重力）', 'gravity.wav'),
+          fx('impact', 'Impact（冲击）', 'impact.wav'),
+          fx('machinery', 'Machinery（机械）', 'machinery.wav'),
+          fx('order', 'Order（秩序）', 'order.wav'),
+          fx('plasma', 'Plasma（等离子）', 'plasma.wav'),
+          fx('projection', 'Projection（投影）', 'projection.wav'),
+          fx('recovery', 'Recovery（恢复）', 'recovery.wav'),
+          fx('stream', 'Stream（激流）', 'stream.wav'),
+          fx('wing', 'Wing（羽翼）', 'wing.wav'),
+          fx('wonder', 'Wonder（奇迹）', 'wonder.wav'),
+        ];
+      case 'nox':
+        return [
+          fx('henshin', '变身！Erase', 'erase.wav', SoundCategory.henshin),
+          fx('gun', '武器音效（Gun）', 'gun.wav', SoundCategory.weapon),
+          fx('midnight', 'MIDNIGHT SHADOW', 'midnight_shadow.wav'),
+          fx('shadow', 'Shadow（暗影）', 'shadow.wav'),
+          fx('wolf', 'Wolf（狼）', 'wolf.wav'),
+        ];
+      case 'dawm':
+        return [
+          fx('henshin', '变身！PUNISH', 'punish.wav', SoundCategory.henshin),
+        ];
+      case 'code3':
+        return [
+          fx('booster', 'Booster（推进器）', 'booster.wav'),
+          fx('extra', 'Extra（追加）', 'extra.wav'),
+        ];
+      case 'code5':
+        return [
+          fx('shock', 'Shock（电击）', 'shock.wav'),
+        ];
+      case 'code6':
+        return [
+          fx('panic', 'Panic（恐慌）', 'panic.wav'),
+        ];
     }
-
-    if (riderId == 'zeztz') {
-      // 通用腰带音（Zeztz 驱动器）
-      sounds.add(fx('belt', '腰带音效', SoundCategory.belt, 'zeztz_driver.wav'));
-      if (formId == 'zeztz_transform') {
-        // 杂项追加音效
-        sounds.addAll([
-          fx('ex_extra', 'Extra（追加）', SoundCategory.other, 'extra.wav'),
-          fx('ex_shock', 'Shock（电击）', SoundCategory.other, 'shock.wav'),
-          fx('ex_panic', 'Panic（恐慌）', SoundCategory.other, 'panic.wav'),
-        ]);
-      }
-    } else if (riderId == 'nox') {
-      sounds.addAll([
-        fx('weapon', '武器音效', SoundCategory.weapon, 'gun.wav'),
-        fx('ex_shadow', 'Shadow（暗影）', SoundCategory.other, 'shadow.wav'),
-        fx('ex_wolf', 'Wolf（狼）', SoundCategory.other, 'wolf.wav'),
-      ]);
-    }
-
-    return sounds;
+    return [];
   }
 
   static final List<TVSeries> _all = [

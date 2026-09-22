@@ -17,14 +17,15 @@ class SoundBoardScreen extends StatefulWidget {
 }
 
 class _SoundBoardScreenState extends State<SoundBoardScreen> {
-  SoundCategory _cat = SoundCategory.henshin;
+  /// 当前分类：null 表示「全部」
+  SoundCategory? _cat;
 
   @override Widget build(BuildContext context) {
     final theme = context.watch<ThemeManager>().currentTheme;
     final ap = context.watch<AudioProvider>();
     final c = Color(int.parse('0xFF${widget.rider.colorHex.substring(1)}'));
     final all = SoundRepository.getSounds(widget.rider.id, widget.selectedForm.id);
-    final filtered = all.where((s) => s.category == _cat).toList();
+    final filtered = _cat == null ? all : all.where((s) => s.category == _cat).toList();
     final henshin = all.where((s) => s.category == SoundCategory.henshin).firstOrNull;
 
     return Scaffold(backgroundColor: theme.colors.background,
@@ -36,9 +37,9 @@ class _SoundBoardScreenState extends State<SoundBoardScreen> {
             child: Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.auto_awesome, size: 48, color: c.withOpacity(0.6)), const SizedBox(height: 8), Text(widget.selectedForm.name, style: TextStyle(fontFamily: theme.typography.titleFontFamily, fontSize: 22, fontWeight: FontWeight.w900, color: c))]))),
           if (henshin != null) Padding(padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12), child: SizedBox(width: double.infinity, height: 72,
             child: ZZZCapsuleButton(label: '变身！HENSHIN!', subLabel: widget.selectedForm.name, iconEmoji: '🔥', accentColor: c, isActive: ap.activeSoundId == henshin.id, isHenshin: true, onPressed: () => ap.play(henshin)))),
-          SizedBox(height: 44, child: ListView(scrollDirection: Axis.horizontal, padding: const EdgeInsets.symmetric(horizontal: 16), children: SoundCategory.values.map((cat) {
+          SizedBox(height: 44, child: ListView(scrollDirection: Axis.horizontal, padding: const EdgeInsets.symmetric(horizontal: 16), children: <SoundCategory?>[null, ...SoundCategory.values].map((cat) {
             final sel = _cat == cat;
-            return Padding(padding: const EdgeInsets.only(right: 8), child: GestureDetector(onTap: () => setState(() => _cat = cat), child: Container(padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8), decoration: BoxDecoration(color: sel ? c.withOpacity(0.25) : theme.colors.surface, borderRadius: BorderRadius.circular(22), border: Border.all(color: sel ? c : c.withOpacity(0.3), width: sel ? 2.5 : 1.5)), child: Text(cat.label, style: TextStyle(color: sel ? Colors.white : theme.colors.textSecondary, fontWeight: sel ? FontWeight.bold : FontWeight.normal, fontSize: 12)))));
+            return Padding(padding: const EdgeInsets.only(right: 8), child: GestureDetector(onTap: () => setState(() => _cat = cat), child: Container(padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8), decoration: BoxDecoration(color: sel ? c.withOpacity(0.25) : theme.colors.surface, borderRadius: BorderRadius.circular(22), border: Border.all(color: sel ? c : c.withOpacity(0.3), width: sel ? 2.5 : 1.5)), child: Text(cat?.label ?? '全部', style: TextStyle(color: sel ? Colors.white : theme.colors.textSecondary, fontWeight: sel ? FontWeight.bold : FontWeight.normal, fontSize: 12)))));
           }).toList())),
           const SizedBox(height: 8),
           Expanded(child: filtered.isEmpty ? Center(child: Text('该分类暂无音效', style: TextStyle(color: theme.colors.textSecondary))) : GridView.builder(padding: const EdgeInsets.symmetric(horizontal: 16), gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10, childAspectRatio: 0.95), itemCount: filtered.length, itemBuilder: (ctx, i) {
