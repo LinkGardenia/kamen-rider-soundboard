@@ -44,7 +44,7 @@ class _ZZZCapsuleButtonState extends State<ZZZCapsuleButton> with SingleTickerPr
                       shadows: widget.isActive ? [Shadow(color: widget.accentColor.withOpacity(0.9), blurRadius: 16)] : [])))
                 else
                   Text(widget.label, textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontFamily: 'Impact', fontSize: 13, fontWeight: FontWeight.w900,
+                    style: TextStyle(fontFamily: 'Impact', fontSize: 11, fontWeight: FontWeight.w900,
                       color: widget.isActive ? widget.accentColor : Colors.white, letterSpacing: 1.0, height: 1.2,
                       shadows: widget.isActive ? [Shadow(color: widget.accentColor.withOpacity(0.9), blurRadius: 16)] : []),),
                 if (widget.subLabel != null) ...[SizedBox(height: widget.isHenshin ? 1 : 2),
